@@ -1,0 +1,388 @@
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.wrap{max-width:680px;margin:0 auto;padding:2rem 1rem}
+.progress-bar{height:3px;background:rgba(255,255,255,0.15);border-radius:2px;margin-bottom:2rem}
+.progress-fill{height:100%;background:#00A3FF;border-radius:2px;transition:width 0.4s ease}
+.section{display:none}
+.section.active{display:block}
+.section-label{font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:0.5rem}
+.section-title{font-size:22px;font-weight:500;color:#fff;margin-bottom:0.5rem}
+.section-sub{font-size:15px;color:rgba(255,255,255,0.65);margin-bottom:2rem;line-height:1.6}
+.question{margin-bottom:1.75rem}
+.question label.qlabel{display:block;font-size:15px;font-weight:500;color:#fff;margin-bottom:0.75rem;line-height:1.5}
+.hint{font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:0.75rem;margin-top:-0.4rem}
+.options{display:flex;flex-direction:column;gap:8px}
+.opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border:0.5px solid rgba(255,255,255,0.15);border-radius:8px;cursor:pointer;transition:border-color 0.15s,background 0.15s}
+.opt:hover{border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.05)}
+.opt.selected{border-color:#00A3FF;background:rgba(0,163,255,0.1)}
+.opt input{accent-color:#00A3FF;width:16px;height:16px;flex-shrink:0}
+.opt span{font-size:14px;color:#fff;line-height:1.4}
+.opt .badge{font-size:11px;color:#00A3FF;margin-left:auto;white-space:nowrap;padding-left:8px}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
+textarea,input[type=text],input[type=email]{width:100%;padding:10px 14px;border:0.5px solid rgba(255,255,255,0.15);border-radius:8px;font-size:14px;color:#fff;background:rgba(255,255,255,0.05);resize:vertical;font-family:inherit;line-height:1.5}
+textarea:focus,input:focus{outline:none;border-color:#00A3FF}
+textarea{min-height:80px}
+input[type=text]::placeholder,input[type=email]::placeholder,textarea::placeholder{color:rgba(255,255,255,0.3)}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-top:2.5rem;padding-top:1.5rem;border-top:0.5px solid rgba(255,255,255,0.1)}
+.btn{padding:10px 24px;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer;border:0.5px solid rgba(255,255,255,0.2);background:transparent;color:#fff;transition:background 0.15s;font-family:inherit}
+.btn:hover{background:rgba(255,255,255,0.08)}
+.btn-primary{background:#00A3FF;color:#fff;border-color:#00A3FF}
+.btn-primary:hover{background:#0091e0}
+.btn-primary:disabled{background:#005580;cursor:not-allowed}
+.btn-back{color:rgba(255,255,255,0.5);border-color:transparent}
+.step-count{font-size:13px;color:rgba(255,255,255,0.4)}
+.divider{height:0.5px;background:rgba(255,255,255,0.1);margin:1.5rem 0}
+.success{text-align:center;padding:3rem 1rem}
+.success-icon{width:56px;height:56px;border-radius:50%;background:rgba(0,163,255,0.15);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem}
+.success-icon svg{width:24px;height:24px;stroke:#00A3FF;fill:none;stroke-width:2}
+.error-msg{color:#ff6b6b;font-size:13px;margin-top:0.75rem;display:none}
+</style>
+
+<div class="wrap">
+  <div class="progress-bar"><div class="progress-fill" id="progress" style="width:16%"></div></div>
+
+  <div class="section active" id="s1">
+    <div class="section-label">Step 1 of 6</div>
+    <div class="section-title">It starts with you.</div>
+    <div class="section-sub">A few basics so we can understand your context before diving into the data.</div>
+    <div class="question">
+      <label class="qlabel">First name</label>
+      <input type="text" id="fname" placeholder="First name">
+    </div>
+    <div class="question">
+      <label class="qlabel">Last name</label>
+      <input type="text" id="lname" placeholder="Last name">
+    </div>
+    <div class="question">
+      <label class="qlabel">Email address</label>
+      <input type="email" id="email" placeholder="you@example.com">
+    </div>
+    <div class="question">
+      <label class="qlabel">What best describes your current role?</label>
+      <div class="options">
+        <label class="opt"><input type="radio" name="role" value="Founder / CEO"><span>Founder / CEO</span></label>
+        <label class="opt"><input type="radio" name="role" value="Executive (C-suite / VP)"><span>Executive (C-suite / VP)</span></label>
+        <label class="opt"><input type="radio" name="role" value="Senior professional / Manager"><span>Senior professional / Manager</span></label>
+        <label class="opt"><input type="radio" name="role" value="Investor / Board member"><span>Investor / Board member</span></label>
+        <label class="opt"><input type="radio" name="role" value="Entrepreneur / Self-employed"><span>Entrepreneur / Self-employed</span></label>
+        <label class="opt"><input type="radio" name="role" value="Other"><span>Other</span></label>
+      </div>
+    </div>
+    <div class="question">
+      <label class="qlabel">Age range</label>
+      <div class="options grid-2">
+        <label class="opt"><input type="radio" name="age" value="25–34"><span>25–34</span></label>
+        <label class="opt"><input type="radio" name="age" value="35–44"><span>35–44</span></label>
+        <label class="opt"><input type="radio" name="age" value="45–54"><span>45–54</span></label>
+        <label class="opt"><input type="radio" name="age" value="55+"><span>55+</span></label>
+      </div>
+    </div>
+    <div class="question">
+      <label class="qlabel">Which protocol are you interested in?</label>
+      <div class="options">
+        <label class="opt"><input type="radio" name="tier" value="Baseline"><span>Baseline</span><span class="badge">$299 one-time</span></label>
+        <label class="opt"><input type="radio" name="tier" value="Optimize"><span>Optimize</span><span class="badge">$149/month</span></label>
+        <label class="opt"><input type="radio" name="tier" value="Not sure yet"><span>Not sure yet — help me decide</span></label>
+      </div>
+    </div>
+    <div class="nav">
+      <span class="step-count">1 of 6</span>
+      <button class="btn btn-primary" onclick="next(1)">Continue →</button>
+    </div>
+  </div>
+
+  <div class="section" id="s2">
+    <div class="section-label">Step 2 of 6</div>
+    <div class="section-title">Your data.</div>
+    <div class="section-sub">This is the foundation of your protocol. Tell us what you're tracking.</div>
+    <div class="question">
+      <label class="qlabel">Which wearables do you currently use? <span style="font-weight:400;color:rgba(255,255,255,0.5)">(select all that apply)</span></label>
+      <div class="options grid-2">
+        <label class="opt"><input type="checkbox" name="wearables" value="Oura Ring"><span>Oura Ring</span></label>
+        <label class="opt"><input type="checkbox" name="wearables" value="Whoop"><span>Whoop</span></label>
+        <label class="opt"><input type="checkbox" name="wearables" value="Apple Watch"><span>Apple Watch</span></label>
+        <label class="opt"><input type="checkbox" name="wearables" value="Garmin"><span>Garmin</span></label>
+        <label class="opt"><input type="checkbox" name="wearables" value="Eight Sleep"><span>Eight Sleep</span></label>
+        <label class="opt"><input type="checkbox" name="wearables" value="CGM (Levels, Dexcom)"><span>CGM (Levels, Dexcom)</span></label>
+        <label class="opt"><input type="checkbox" name="wearables" value="Fitbit"><span>Fitbit</span></label>
+        <label class="opt"><input type="checkbox" name="wearables" value="Polar"><span>Polar</span></label>
+        <label class="opt"><input type="checkbox" name="wearables" value="Samsung Galaxy Watch"><span>Samsung Galaxy Watch</span></label>
+        <label class="opt"><input type="checkbox" name="wearables" value="Ultrahuman Ring"><span>Ultrahuman Ring</span></label>
+        <label class="opt"><input type="checkbox" name="wearables" value="Withings Scale"><span>Withings Scale</span></label>
+        <label class="opt"><input type="checkbox" name="wearables" value="None currently"><span>None currently</span></label>
+        <label class="opt"><input type="checkbox" name="wearables" value="Other"><span>Other</span></label>
+      </div>
+    </div>
+    <div class="question">
+      <label class="qlabel">How much wearable history do you have?</label>
+      <div class="options">
+        <label class="opt"><input type="radio" name="history" value="Less than 3 months"><span>Less than 3 months</span></label>
+        <label class="opt"><input type="radio" name="history" value="3–6 months"><span>3–6 months</span></label>
+        <label class="opt"><input type="radio" name="history" value="6–12 months"><span>6–12 months</span></label>
+        <label class="opt"><input type="radio" name="history" value="1–2 years"><span>1–2 years</span></label>
+        <label class="opt"><input type="radio" name="history" value="2+ years"><span>2+ years</span></label>
+      </div>
+    </div>
+    <div class="question">
+      <label class="qlabel">Have you had bloodwork done in the last 12 months?</label>
+      <div class="options">
+        <label class="opt"><input type="radio" name="bloodwork" value="Yes — comprehensive panel"><span>Yes — comprehensive panel (metabolic, hormones, inflammation)</span></label>
+        <label class="opt"><input type="radio" name="bloodwork" value="Yes — basic panel"><span>Yes — basic panel (standard annual labs)</span></label>
+        <label class="opt"><input type="radio" name="bloodwork" value="No, but open to it"><span>No, but I'm open to getting it done</span></label>
+        <label class="opt"><input type="radio" name="bloodwork" value="No"><span>No</span></label>
+      </div>
+    </div>
+    <div class="nav">
+      <button class="btn btn-back" onclick="back(2)">← Back</button>
+      <button class="btn btn-primary" onclick="next(2)">Continue →</button>
+    </div>
+  </div>
+
+  <div class="section" id="s3">
+    <div class="section-label">Step 3 of 6</div>
+    <div class="section-title">Current state.</div>
+    <div class="section-sub">Be honest — this is where the protocol starts.</div>
+    <div class="question">
+      <label class="qlabel">Average sleep quality</label>
+      <div class="options">
+        <label class="opt"><input type="radio" name="sleep" value="Poor — rarely feel rested"><span>Poor — rarely feel rested</span></label>
+        <label class="opt"><input type="radio" name="sleep" value="Inconsistent — good and bad nights"><span>Inconsistent — good nights and bad nights</span></label>
+        <label class="opt"><input type="radio" name="sleep" value="Decent — not optimal"><span>Decent — usually okay but not optimal</span></label>
+        <label class="opt"><input type="radio" name="sleep" value="Good — consistently restful"><span>Good — consistently restful</span></label>
+      </div>
+    </div>
+    <div class="question">
+      <label class="qlabel">Daily energy levels</label>
+      <div class="options">
+        <label class="opt"><input type="radio" name="energy" value="Low — struggling most days"><span>Low — struggling most days</span></label>
+        <label class="opt"><input type="radio" name="energy" value="Variable — afternoon crashes"><span>Variable — afternoon crashes or inconsistency</span></label>
+        <label class="opt"><input type="radio" name="energy" value="Moderate — functional but not sharp"><span>Moderate — functional but not sharp</span></label>
+        <label class="opt"><input type="radio" name="energy" value="High — consistently energized"><span>High — consistently energized</span></label>
+      </div>
+    </div>
+    <div class="question">
+      <label class="qlabel">Biggest performance pain points <span style="font-weight:400;color:rgba(255,255,255,0.5)">(select all that apply)</span></label>
+      <div class="options grid-2">
+        <label class="opt"><input type="checkbox" name="painpoints" value="Sleep quality"><span>Sleep quality</span></label>
+        <label class="opt"><input type="checkbox" name="painpoints" value="Energy & focus"><span>Energy & focus</span></label>
+        <label class="opt"><input type="checkbox" name="painpoints" value="Stress & recovery"><span>Stress & recovery</span></label>
+        <label class="opt"><input type="checkbox" name="painpoints" value="Body composition"><span>Body composition</span></label>
+        <label class="opt"><input type="checkbox" name="painpoints" value="Exercise performance"><span>Exercise performance</span></label>
+        <label class="opt"><input type="checkbox" name="painpoints" value="Cognitive performance"><span>Cognitive performance</span></label>
+        <label class="opt"><input type="checkbox" name="painpoints" value="Hormonal balance"><span>Hormonal balance</span></label>
+        <label class="opt"><input type="checkbox" name="painpoints" value="Gut health"><span>Gut health</span></label>
+        <label class="opt"><input type="checkbox" name="painpoints" value="Longevity & prevention"><span>Longevity & prevention</span></label>
+        <label class="opt"><input type="checkbox" name="painpoints" value="Not sure yet"><span>Not sure yet</span></label>
+      </div>
+    </div>
+    <div class="question">
+      <label class="qlabel">Exercise frequency</label>
+      <div class="options">
+        <label class="opt"><input type="radio" name="exercise" value="Minimal — less than once a week"><span>Minimal — less than once a week</span></label>
+        <label class="opt"><input type="radio" name="exercise" value="Light — 1–2x per week"><span>Light — 1–2x per week</span></label>
+        <label class="opt"><input type="radio" name="exercise" value="Moderate — 3–4x per week"><span>Moderate — 3–4x per week</span></label>
+        <label class="opt"><input type="radio" name="exercise" value="Active — 5+ times per week"><span>Active — 5+ times per week</span></label>
+      </div>
+    </div>
+    <div class="question">
+      <label class="qlabel">Exercise type <span style="font-weight:400;color:rgba(255,255,255,0.5)">(select all that apply)</span></label>
+      <div class="options grid-2">
+        <label class="opt"><input type="checkbox" name="exercisetype" value="Strength / resistance training"><span>Strength / resistance training</span></label>
+        <label class="opt"><input type="checkbox" name="exercisetype" value="Cardio (running, cycling, rowing)"><span>Cardio (running, cycling, rowing)</span></label>
+        <label class="opt"><input type="checkbox" name="exercisetype" value="HIIT / interval training"><span>HIIT / interval training</span></label>
+        <label class="opt"><input type="checkbox" name="exercisetype" value="Yoga / Pilates / mobility"><span>Yoga / Pilates / mobility</span></label>
+        <label class="opt"><input type="checkbox" name="exercisetype" value="Outdoor / recreational"><span>Outdoor / recreational (hiking, sports)</span></label>
+        <label class="opt"><input type="checkbox" name="exercisetype" value="Mixed / varies"><span>Mixed / varies week to week</span></label>
+        <label class="opt"><input type="checkbox" name="exercisetype" value="Minimal / not currently"><span>Minimal / not currently exercising</span></label>
+      </div>
+    </div>
+    <div class="nav">
+      <button class="btn btn-back" onclick="back(3)">← Back</button>
+      <button class="btn btn-primary" onclick="next(3)">Continue →</button>
+    </div>
+  </div>
+
+  <div class="section" id="s4">
+    <div class="section-label">Step 4 of 6</div>
+    <div class="section-title">Your goals.</div>
+    <div class="section-sub">What does optimized look like for you?</div>
+    <div class="question">
+      <label class="qlabel">Primary goal with Forethos</label>
+      <div class="options">
+        <label class="opt"><input type="radio" name="primarygoal" value="Optimize cognitive performance & focus"><span>Optimize cognitive performance & focus</span></label>
+        <label class="opt"><input type="radio" name="primarygoal" value="Improve sleep quality & recovery"><span>Improve sleep quality & recovery</span></label>
+        <label class="opt"><input type="radio" name="primarygoal" value="Increase energy & reduce fatigue"><span>Increase energy & reduce fatigue</span></label>
+        <label class="opt"><input type="radio" name="primarygoal" value="Improve body composition"><span>Improve body composition</span></label>
+        <label class="opt"><input type="radio" name="primarygoal" value="Optimize longevity & healthspan"><span>Optimize longevity & healthspan</span></label>
+        <label class="opt"><input type="radio" name="primarygoal" value="Understand & act on my data"><span>Understand & act on my data</span></label>
+        <label class="opt"><input type="radio" name="primarygoal" value="All of the above"><span>All of the above — I want the full picture</span></label>
+      </div>
+    </div>
+    <div class="question">
+      <label class="qlabel">What would success look like 90 days from now?</label>
+      <div class="hint">Be specific if you can — there are no wrong answers.</div>
+      <textarea id="outcome" placeholder="e.g. I wake up feeling rested, my afternoon energy doesn't crash, and I have a clear system I can sustain..."></textarea>
+    </div>
+    <div class="nav">
+      <button class="btn btn-back" onclick="back(4)">← Back</button>
+      <button class="btn btn-primary" onclick="next(4)">Continue →</button>
+    </div>
+  </div>
+
+  <div class="section" id="s5">
+    <div class="section-label">Step 5 of 6</div>
+    <div class="section-title">Your starting point.</div>
+    <div class="section-sub">Help us understand what you've tried and how ready you are to act.</div>
+    <div class="question">
+      <label class="qlabel">Have you worked with a health coach or similar practitioner before?</label>
+      <div class="options">
+        <label class="opt"><input type="radio" name="prior" value="Yes, currently"><span>Yes — currently working with someone</span></label>
+        <label class="opt"><input type="radio" name="prior" value="Yes, in the past"><span>Yes — in the past</span></label>
+        <label class="opt"><input type="radio" name="prior" value="No, but researched extensively"><span>No — but I've done significant research on my own</span></label>
+        <label class="opt"><input type="radio" name="prior" value="No, fairly new"><span>No — fairly new to this space</span></label>
+      </div>
+    </div>
+    <div class="question">
+      <label class="qlabel">How familiar are you with interpreting your own health data?</label>
+      <div class="options">
+        <label class="opt"><input type="radio" name="familiarity" value="Beginner"><span>Beginner — I track but don't really know what it means</span></label>
+        <label class="opt"><input type="radio" name="familiarity" value="Intermediate"><span>Intermediate — I understand the basics</span></label>
+        <label class="opt"><input type="radio" name="familiarity" value="Advanced"><span>Advanced — I'm comfortable analyzing my data</span></label>
+        <label class="opt"><input type="radio" name="familiarity" value="Expert"><span>Expert — deep knowledge of biohacking & biomarkers</span></label>
+      </div>
+    </div>
+    <div class="question">
+      <label class="qlabel">How ready are you to make changes?</label>
+      <div class="options">
+        <label class="opt"><input type="radio" name="readiness" value="Exploring"><span>Exploring — not ready for major changes yet</span></label>
+        <label class="opt"><input type="radio" name="readiness" value="Gradual changes"><span>Ready — looking for gradual, sustainable changes</span></label>
+        <label class="opt"><input type="radio" name="readiness" value="Fully committed"><span>Ready to commit — I want a real protocol and I'll follow it</span></label>
+        <label class="opt"><input type="radio" name="readiness" value="Already optimizing"><span>Already optimizing — I want to go deeper</span></label>
+      </div>
+    </div>
+    <div class="nav">
+      <button class="btn btn-back" onclick="back(5)">← Back</button>
+      <button class="btn btn-primary" onclick="next(5)">Continue →</button>
+    </div>
+  </div>
+
+  <div class="section" id="s6">
+    <div class="section-label">Step 6 of 6</div>
+    <div class="section-title">Almost there.</div>
+    <div class="section-sub">One last step before we build your protocol.</div>
+    <div class="question">
+      <label class="qlabel">Any supplements, medications, or health conditions we should know about?</label>
+      <div class="hint">No need to list everything — just flag anything relevant.</div>
+      <textarea id="health" placeholder="e.g. Magnesium glycinate, Vitamin D, Hashimoto's, lower back injury..."></textarea>
+    </div>
+    <div class="question">
+      <label class="qlabel">How did you hear about Forethos?</label>
+      <div class="options grid-2">
+        <label class="opt"><input type="radio" name="source" value="Referral"><span>Referral from someone I know</span></label>
+        <label class="opt"><input type="radio" name="source" value="LinkedIn"><span>LinkedIn</span></label>
+        <label class="opt"><input type="radio" name="source" value="Google / Search"><span>Google / Search</span></label>
+        <label class="opt"><input type="radio" name="source" value="Social media"><span>Social media</span></label>
+        <label class="opt"><input type="radio" name="source" value="Other"><span>Other</span></label>
+      </div>
+    </div>
+    <div class="question">
+      <label class="qlabel">Anything else to add?</label>
+      <div class="hint">Including any "Other" selections above — please specify here.</div>
+      <textarea id="other" placeholder="Context, questions, or anything else on your mind..."></textarea>
+    </div>
+    <div class="nav">
+      <button class="btn btn-back" onclick="back(6)">← Back</button>
+      <button class="btn btn-primary" id="submitBtn" onclick="submitForm()">Submit →</button>
+    </div>
+    <div class="error-msg" id="errorMsg">Something went wrong. Please try again or email hello@forethos.io</div>
+  </div>
+
+  <div class="section" id="sdone">
+    <div class="success">
+      <div class="success-icon">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <div class="section-title" style="margin-bottom:0.75rem">You're in.</div>
+      <div class="section-sub" style="max-width:420px;margin:0 auto 2rem">We've received your intake. Expect a personal response from Mikey at hello@forethos.io within 24 hours — including your recommended protocol tier and next steps.</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.35)">Forethos · Wellness intelligence for high-performers</div>
+    </div>
+  </div>
+</div>
+
+<script>
+let cur=1;
+const total=6;
+function setProgress(s){document.getElementById('progress').style.width=((s/total)*100)+'%'}
+function showSection(n){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(n===0?'sdone':'s'+n).classList.add('active');
+  setProgress(n);
+  window.scrollTo&&window.scrollTo(0,0);
+}
+document.querySelectorAll('.opt').forEach(opt=>{
+  opt.addEventListener('click',function(){
+    const inp=this.querySelector('input');
+    if(inp.type==='radio'){
+      document.querySelectorAll('input[name="'+inp.name+'"]').forEach(r=>{
+        r.closest('.opt').classList.remove('selected');
+      });
+      this.classList.add('selected');
+    } else {
+      this.classList.toggle('selected',inp.checked);
+    }
+  });
+});
+function getChecked(name){
+  return Array.from(document.querySelectorAll('input[name="'+name+'"]:checked')).map(i=>i.value).join(', ')||'Not selected';
+}
+function getRadio(name){
+  const el=document.querySelector('input[name="'+name+'"]:checked');
+  return el?el.value:'Not selected';
+}
+function next(s){cur=s+1;showSection(cur)}
+function back(s){cur=s-1;showSection(cur)}
+async function submitForm(){
+  const btn=document.getElementById('submitBtn');
+  const errMsg=document.getElementById('errorMsg');
+  btn.disabled=true;
+  btn.textContent='Submitting...';
+  errMsg.style.display='none';
+  const data={
+    'First Name':document.getElementById('fname').value||'Not provided',
+    'Last Name':document.getElementById('lname').value||'Not provided',
+    'Email':document.getElementById('email').value||'Not provided',
+    'Role':getRadio('role'),
+    'Age Range':getRadio('age'),
+    'Protocol Interest':getRadio('tier'),
+    'Wearables':getChecked('wearables'),
+    'Wearable History':getRadio('history'),
+    'Bloodwork':getRadio('bloodwork'),
+    'Sleep Quality':getRadio('sleep'),
+    'Energy Levels':getRadio('energy'),
+    'Pain Points':getChecked('painpoints'),
+    'Exercise Frequency':getRadio('exercise'),
+    'Exercise Type':getChecked('exercisetype'),
+    'Primary Goal':getRadio('primarygoal'),
+    '90-Day Outcome':document.getElementById('outcome').value||'Not provided',
+    'Prior Coaching':getRadio('prior'),
+    'Data Familiarity':getRadio('familiarity'),
+    'Readiness':getRadio('readiness'),
+    'Health & Supplements':document.getElementById('health').value||'None listed',
+    'How They Found Us':getRadio('source'),
+    'Additional Notes':document.getElementById('other').value||'None'
+  };
+  try{
+    const res=await fetch('https://formspree.io/f/mjgaebgo',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify(data)
+    });
+    if(res.ok){showSection(0);}
+    else{throw new Error('Failed');}
+  }catch(e){
+    btn.disabled=false;
+    btn.textContent='Submit →';
+    errMsg.style.display='block';
+  }
+}
+</script>
