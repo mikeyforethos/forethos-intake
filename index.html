@@ -1,44 +1,44 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-size:17px}
-.wrap{max-width:680px;margin:0 auto;padding:2rem 1.25rem}
-.logo-wrap{text-align:center;margin-bottom:2rem}
-.logo-wrap img{height:80px;width:auto}
-.progress-bar{height:3px;background:rgba(255,255,255,0.15);border-radius:2px;margin-bottom:2rem}
+html,body{background:#0D1B2A;min-height:100vh}
+.wrap{max-width:700px;margin:0 auto;padding:2.5rem 1.5rem;background:#0D1B2A}
+.logo-wrap{text-align:center;margin-bottom:2.5rem}
+.logo-wrap img{height:90px;width:auto}
+.progress-bar{height:4px;background:rgba(255,255,255,0.12);border-radius:2px;margin-bottom:2.5rem}
 .progress-fill{height:100%;background:#00A3FF;border-radius:2px;transition:width 0.4s ease}
 .section{display:none}
 .section.active{display:block}
-.section-label{font-size:12px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:0.5rem}
-.section-title{font-size:26px;font-weight:500;color:#fff;margin-bottom:0.5rem}
-.section-sub{font-size:16px;color:rgba(255,255,255,0.65);margin-bottom:2rem;line-height:1.6}
-.question{margin-bottom:1.75rem}
-.question label.qlabel{display:block;font-size:16px;font-weight:500;color:#fff;margin-bottom:0.75rem;line-height:1.5}
-.hint{font-size:14px;color:rgba(255,255,255,0.5);margin-bottom:0.75rem;margin-top:-0.4rem}
-.options{display:flex;flex-direction:column;gap:8px}
-.opt{display:flex;align-items:center;gap:12px;padding:12px 16px;border:0.5px solid rgba(255,255,255,0.15);border-radius:8px;cursor:pointer;transition:border-color 0.15s,background 0.15s}
+.section-label{font-size:13px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:0.6rem}
+.section-title{font-size:30px;font-weight:500;color:#fff;margin-bottom:0.6rem;line-height:1.2}
+.section-sub{font-size:17px;color:rgba(255,255,255,0.65);margin-bottom:2.5rem;line-height:1.6}
+.question{margin-bottom:2rem}
+.question label.qlabel{display:block;font-size:17px;font-weight:500;color:#fff;margin-bottom:0.85rem;line-height:1.5}
+.hint{font-size:15px;color:rgba(255,255,255,0.5);margin-bottom:0.85rem;margin-top:-0.5rem}
+.options{display:flex;flex-direction:column;gap:10px}
+.opt{display:flex;align-items:center;gap:14px;padding:14px 18px;border:0.5px solid rgba(255,255,255,0.15);border-radius:10px;cursor:pointer;transition:border-color 0.15s,background 0.15s}
 .opt:hover{border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.05)}
 .opt.selected{border-color:#00A3FF;background:rgba(0,163,255,0.1)}
-.opt input{accent-color:#00A3FF;width:18px;height:18px;flex-shrink:0}
-.opt span{font-size:15px;color:#fff;line-height:1.4}
-.opt .badge{font-size:12px;color:#00A3FF;margin-left:auto;white-space:nowrap;padding-left:8px}
-.grid-2{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
-textarea,input[type=text],input[type=email]{width:100%;padding:12px 16px;border:0.5px solid rgba(255,255,255,0.15);border-radius:8px;font-size:15px;color:#fff;background:rgba(255,255,255,0.05);resize:vertical;font-family:inherit;line-height:1.5}
+.opt input{accent-color:#00A3FF;width:20px;height:20px;flex-shrink:0}
+.opt span{font-size:16px;color:#fff;line-height:1.4}
+.opt .badge{font-size:13px;color:#00A3FF;margin-left:auto;white-space:nowrap;padding-left:8px}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+textarea,input[type=text],input[type=email]{width:100%;padding:14px 18px;border:0.5px solid rgba(255,255,255,0.15);border-radius:10px;font-size:16px;color:#fff;background:rgba(255,255,255,0.05);resize:vertical;font-family:inherit;line-height:1.5}
 textarea:focus,input:focus{outline:none;border-color:#00A3FF}
-textarea{min-height:90px}
+textarea{min-height:100px}
 input[type=text]::placeholder,input[type=email]::placeholder,textarea::placeholder{color:rgba(255,255,255,0.3)}
-.nav{display:flex;justify-content:space-between;align-items:center;margin-top:2.5rem;padding-top:1.5rem;border-top:0.5px solid rgba(255,255,255,0.1)}
-.btn{padding:12px 28px;border-radius:8px;font-size:15px;font-weight:500;cursor:pointer;border:0.5px solid rgba(255,255,255,0.2);background:transparent;color:#fff;transition:background 0.15s;font-family:inherit}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-top:3rem;padding-top:1.75rem;border-top:0.5px solid rgba(255,255,255,0.1)}
+.btn{padding:14px 32px;border-radius:10px;font-size:16px;font-weight:500;cursor:pointer;border:0.5px solid rgba(255,255,255,0.2);background:transparent;color:#fff;transition:background 0.15s;font-family:inherit}
 .btn:hover{background:rgba(255,255,255,0.08)}
 .btn-primary{background:#00A3FF;color:#fff;border-color:#00A3FF}
 .btn-primary:hover{background:#0091e0}
 .btn-primary:disabled{background:#005580;cursor:not-allowed}
 .btn-back{color:rgba(255,255,255,0.5);border-color:transparent}
-.step-count{font-size:14px;color:rgba(255,255,255,0.4)}
-.divider{height:0.5px;background:rgba(255,255,255,0.1);margin:1.5rem 0}
-.success{text-align:center;padding:3rem 1rem}
-.success-icon{width:64px;height:64px;border-radius:50%;background:rgba(0,163,255,0.15);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem}
-.success-icon svg{width:28px;height:28px;stroke:#00A3FF;fill:none;stroke-width:2}
-.error-msg{color:#ff6b6b;font-size:14px;margin-top:0.75rem;display:none}
+.step-count{font-size:15px;color:rgba(255,255,255,0.4)}
+.divider{height:0.5px;background:rgba(255,255,255,0.1);margin:1.75rem 0}
+.success{text-align:center;padding:4rem 1rem}
+.success-icon{width:72px;height:72px;border-radius:50%;background:rgba(0,163,255,0.15);display:flex;align-items:center;justify-content:center;margin:0 auto 2rem}
+.success-icon svg{width:32px;height:32px;stroke:#00A3FF;fill:none;stroke-width:2}
+.error-msg{color:#ff6b6b;font-size:15px;margin-top:0.75rem;display:none}
 </style>
 
 <div class="wrap">
@@ -309,8 +309,8 @@ input[type=text]::placeholder,input[type=email]::placeholder,textarea::placehold
         <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
       </div>
       <div class="section-title" style="margin-bottom:0.75rem">You're in.</div>
-      <div class="section-sub" style="max-width:420px;margin:0 auto 2rem">We've received your intake. Expect a personal response from Mikey at hello@forethos.io within 24 hours — including your recommended protocol tier and next steps.</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.35)">Forethos · Wellness intelligence for high-performers</div>
+      <div class="section-sub" style="max-width:440px;margin:0 auto 2rem">We've received your intake. Expect a personal response from Mikey at hello@forethos.io within 24 hours — including your recommended protocol tier and next steps.</div>
+      <div style="font-size:14px;color:rgba(255,255,255,0.35)">Forethos · Wellness intelligence for high-performers</div>
     </div>
   </div>
 </div>
