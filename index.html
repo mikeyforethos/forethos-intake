@@ -1,44 +1,45 @@
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{background:#0D1B2A;min-height:100vh}
+html,body{background:#0D1B2A;min-height:100vh;font-family:'Inter',sans-serif}
 .wrap{max-width:700px;margin:0 auto;padding:2.5rem 1.5rem;background:#0D1B2A}
 .logo-wrap{text-align:center;margin-bottom:2.5rem}
 .logo-wrap img{height:90px;width:auto}
-.progress-bar{height:4px;background:rgba(255,255,255,0.12);border-radius:2px;margin-bottom:2.5rem}
+.progress-bar{height:4px;background:rgba(255,255,255,0.1);border-radius:2px;margin-bottom:2.5rem}
 .progress-fill{height:100%;background:#00A3FF;border-radius:2px;transition:width 0.4s ease}
 .section{display:none}
 .section.active{display:block}
-.section-label{font-size:13px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:0.6rem}
-.section-title{font-size:30px;font-weight:500;color:#fff;margin-bottom:0.6rem;line-height:1.2}
-.section-sub{font-size:17px;color:rgba(255,255,255,0.65);margin-bottom:2.5rem;line-height:1.6}
+.section-label{font-size:12px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(240,244,248,0.4);margin-bottom:0.6rem}
+.section-title{font-size:28px;font-weight:500;color:#E8EDF2;margin-bottom:0.6rem;line-height:1.2}
+.section-sub{font-size:16px;color:rgba(240,244,248,0.6);margin-bottom:2.5rem;line-height:1.6}
 .question{margin-bottom:2rem}
-.question label.qlabel{display:block;font-size:17px;font-weight:500;color:#fff;margin-bottom:0.85rem;line-height:1.5}
-.hint{font-size:15px;color:rgba(255,255,255,0.5);margin-bottom:0.85rem;margin-top:-0.5rem}
+.question label.qlabel{display:block;font-size:16px;font-weight:500;color:#E8EDF2;margin-bottom:0.85rem;line-height:1.5}
+.hint{font-size:14px;color:rgba(240,244,248,0.45);margin-bottom:0.85rem;margin-top:-0.5rem}
 .options{display:flex;flex-direction:column;gap:10px}
-.opt{display:flex;align-items:center;gap:14px;padding:14px 18px;border:0.5px solid rgba(255,255,255,0.15);border-radius:10px;cursor:pointer;transition:border-color 0.15s,background 0.15s}
-.opt:hover{border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.05)}
-.opt.selected{border-color:#00A3FF;background:rgba(0,163,255,0.1)}
+.opt{display:flex;align-items:center;gap:14px;padding:14px 18px;border:0.5px solid rgba(255,255,255,0.12);border-radius:10px;cursor:pointer;transition:border-color 0.15s,background 0.15s}
+.opt:hover{border-color:rgba(255,255,255,0.25);background:rgba(255,255,255,0.04)}
+.opt.selected{border-color:#00A3FF;background:rgba(0,163,255,0.09)}
 .opt input{accent-color:#00A3FF;width:20px;height:20px;flex-shrink:0}
-.opt span{font-size:16px;color:#fff;line-height:1.4}
-.opt .badge{font-size:13px;color:#00A3FF;margin-left:auto;white-space:nowrap;padding-left:8px}
+.opt span{font-size:15px;color:#D8E0E8;line-height:1.4}
+.opt .badge{font-size:13px;color:#00A3FF;margin-left:auto;white-space:nowrap;padding-left:8px;font-weight:500}
 .grid-2{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
-textarea,input[type=text],input[type=email]{width:100%;padding:14px 18px;border:0.5px solid rgba(255,255,255,0.15);border-radius:10px;font-size:16px;color:#fff;background:rgba(255,255,255,0.05);resize:vertical;font-family:inherit;line-height:1.5}
+textarea,input[type=text],input[type=email]{width:100%;padding:14px 18px;border:0.5px solid rgba(255,255,255,0.12);border-radius:10px;font-size:15px;color:#E8EDF2;background:rgba(255,255,255,0.04);resize:vertical;font-family:'Inter',sans-serif;line-height:1.5}
 textarea:focus,input:focus{outline:none;border-color:#00A3FF}
 textarea{min-height:100px}
-input[type=text]::placeholder,input[type=email]::placeholder,textarea::placeholder{color:rgba(255,255,255,0.3)}
-.nav{display:flex;justify-content:space-between;align-items:center;margin-top:3rem;padding-top:1.75rem;border-top:0.5px solid rgba(255,255,255,0.1)}
-.btn{padding:14px 32px;border-radius:10px;font-size:16px;font-weight:500;cursor:pointer;border:0.5px solid rgba(255,255,255,0.2);background:transparent;color:#fff;transition:background 0.15s;font-family:inherit}
-.btn:hover{background:rgba(255,255,255,0.08)}
+input[type=text]::placeholder,input[type=email]::placeholder,textarea::placeholder{color:rgba(240,244,248,0.25)}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-top:3rem;padding-top:1.75rem;border-top:0.5px solid rgba(255,255,255,0.08)}
+.btn{padding:14px 32px;border-radius:10px;font-size:15px;font-weight:500;cursor:pointer;border:0.5px solid rgba(255,255,255,0.18);background:transparent;color:#D8E0E8;transition:background 0.15s;font-family:'Inter',sans-serif}
+.btn:hover{background:rgba(255,255,255,0.06)}
 .btn-primary{background:#00A3FF;color:#fff;border-color:#00A3FF}
 .btn-primary:hover{background:#0091e0}
 .btn-primary:disabled{background:#005580;cursor:not-allowed}
-.btn-back{color:rgba(255,255,255,0.5);border-color:transparent}
-.step-count{font-size:15px;color:rgba(255,255,255,0.4)}
-.divider{height:0.5px;background:rgba(255,255,255,0.1);margin:1.75rem 0}
+.btn-back{color:rgba(240,244,248,0.45);border-color:transparent}
+.step-count{font-size:14px;color:rgba(240,244,248,0.35)}
+.divider{height:0.5px;background:rgba(255,255,255,0.08);margin:1.75rem 0}
 .success{text-align:center;padding:4rem 1rem}
-.success-icon{width:72px;height:72px;border-radius:50%;background:rgba(0,163,255,0.15);display:flex;align-items:center;justify-content:center;margin:0 auto 2rem}
+.success-icon{width:72px;height:72px;border-radius:50%;background:rgba(0,163,255,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 2rem}
 .success-icon svg{width:32px;height:32px;stroke:#00A3FF;fill:none;stroke-width:2}
-.error-msg{color:#ff6b6b;font-size:15px;margin-top:0.75rem;display:none}
+.error-msg{color:#ff6b6b;font-size:14px;margin-top:0.75rem;display:none}
 </style>
 
 <div class="wrap">
@@ -51,18 +52,9 @@ input[type=text]::placeholder,input[type=email]::placeholder,textarea::placehold
     <div class="section-label">Step 1 of 6</div>
     <div class="section-title">It starts with you.</div>
     <div class="section-sub">A few basics so we can understand your context before diving into the data.</div>
-    <div class="question">
-      <label class="qlabel">First name</label>
-      <input type="text" id="fname" placeholder="First name">
-    </div>
-    <div class="question">
-      <label class="qlabel">Last name</label>
-      <input type="text" id="lname" placeholder="Last name">
-    </div>
-    <div class="question">
-      <label class="qlabel">Email address</label>
-      <input type="email" id="email" placeholder="you@example.com">
-    </div>
+    <div class="question"><label class="qlabel">First name</label><input type="text" id="fname" placeholder="First name"></div>
+    <div class="question"><label class="qlabel">Last name</label><input type="text" id="lname" placeholder="Last name"></div>
+    <div class="question"><label class="qlabel">Email address</label><input type="email" id="email" placeholder="you@example.com"></div>
     <div class="question">
       <label class="qlabel">What best describes your current role?</label>
       <div class="options">
@@ -91,10 +83,7 @@ input[type=text]::placeholder,input[type=email]::placeholder,textarea::placehold
         <label class="opt"><input type="radio" name="tier" value="Not sure yet"><span>Not sure yet — help me decide</span></label>
       </div>
     </div>
-    <div class="nav">
-      <span class="step-count">1 of 6</span>
-      <button class="btn btn-primary" onclick="next(1)">Continue →</button>
-    </div>
+    <div class="nav"><span class="step-count">1 of 6</span><button class="btn btn-primary" onclick="next(1)">Continue →</button></div>
   </div>
 
   <div class="section" id="s2">
@@ -102,7 +91,7 @@ input[type=text]::placeholder,input[type=email]::placeholder,textarea::placehold
     <div class="section-title">Your data.</div>
     <div class="section-sub">This is the foundation of your protocol. Tell us what you're tracking.</div>
     <div class="question">
-      <label class="qlabel">Which wearables do you currently use? <span style="font-weight:400;color:rgba(255,255,255,0.5)">(select all that apply)</span></label>
+      <label class="qlabel">Which wearables do you currently use? <span style="font-weight:400;color:rgba(240,244,248,0.45)">(select all that apply)</span></label>
       <div class="options grid-2">
         <label class="opt"><input type="checkbox" name="wearables" value="Oura Ring"><span>Oura Ring</span></label>
         <label class="opt"><input type="checkbox" name="wearables" value="Whoop"><span>Whoop</span></label>
@@ -138,10 +127,7 @@ input[type=text]::placeholder,input[type=email]::placeholder,textarea::placehold
         <label class="opt"><input type="radio" name="bloodwork" value="No"><span>No</span></label>
       </div>
     </div>
-    <div class="nav">
-      <button class="btn btn-back" onclick="back(2)">← Back</button>
-      <button class="btn btn-primary" onclick="next(2)">Continue →</button>
-    </div>
+    <div class="nav"><button class="btn btn-back" onclick="back(2)">← Back</button><button class="btn btn-primary" onclick="next(2)">Continue →</button></div>
   </div>
 
   <div class="section" id="s3">
@@ -167,7 +153,7 @@ input[type=text]::placeholder,input[type=email]::placeholder,textarea::placehold
       </div>
     </div>
     <div class="question">
-      <label class="qlabel">Biggest performance pain points <span style="font-weight:400;color:rgba(255,255,255,0.5)">(select all that apply)</span></label>
+      <label class="qlabel">Biggest performance pain points <span style="font-weight:400;color:rgba(240,244,248,0.45)">(select all that apply)</span></label>
       <div class="options grid-2">
         <label class="opt"><input type="checkbox" name="painpoints" value="Sleep quality"><span>Sleep quality</span></label>
         <label class="opt"><input type="checkbox" name="painpoints" value="Energy & focus"><span>Energy & focus</span></label>
@@ -191,7 +177,7 @@ input[type=text]::placeholder,input[type=email]::placeholder,textarea::placehold
       </div>
     </div>
     <div class="question">
-      <label class="qlabel">Exercise type <span style="font-weight:400;color:rgba(255,255,255,0.5)">(select all that apply)</span></label>
+      <label class="qlabel">Exercise type <span style="font-weight:400;color:rgba(240,244,248,0.45)">(select all that apply)</span></label>
       <div class="options grid-2">
         <label class="opt"><input type="checkbox" name="exercisetype" value="Strength / resistance training"><span>Strength / resistance training</span></label>
         <label class="opt"><input type="checkbox" name="exercisetype" value="Cardio (running, cycling, rowing)"><span>Cardio (running, cycling, rowing)</span></label>
@@ -202,10 +188,7 @@ input[type=text]::placeholder,input[type=email]::placeholder,textarea::placehold
         <label class="opt"><input type="checkbox" name="exercisetype" value="Minimal / not currently"><span>Minimal / not currently exercising</span></label>
       </div>
     </div>
-    <div class="nav">
-      <button class="btn btn-back" onclick="back(3)">← Back</button>
-      <button class="btn btn-primary" onclick="next(3)">Continue →</button>
-    </div>
+    <div class="nav"><button class="btn btn-back" onclick="back(3)">← Back</button><button class="btn btn-primary" onclick="next(3)">Continue →</button></div>
   </div>
 
   <div class="section" id="s4">
@@ -229,10 +212,7 @@ input[type=text]::placeholder,input[type=email]::placeholder,textarea::placehold
       <div class="hint">Be specific if you can — there are no wrong answers.</div>
       <textarea id="outcome" placeholder="e.g. I wake up feeling rested, my afternoon energy doesn't crash, and I have a clear system I can sustain..."></textarea>
     </div>
-    <div class="nav">
-      <button class="btn btn-back" onclick="back(4)">← Back</button>
-      <button class="btn btn-primary" onclick="next(4)">Continue →</button>
-    </div>
+    <div class="nav"><button class="btn btn-back" onclick="back(4)">← Back</button><button class="btn btn-primary" onclick="next(4)">Continue →</button></div>
   </div>
 
   <div class="section" id="s5">
@@ -266,10 +246,7 @@ input[type=text]::placeholder,input[type=email]::placeholder,textarea::placehold
         <label class="opt"><input type="radio" name="readiness" value="Already optimizing"><span>Already optimizing — I want to go deeper</span></label>
       </div>
     </div>
-    <div class="nav">
-      <button class="btn btn-back" onclick="back(5)">← Back</button>
-      <button class="btn btn-primary" onclick="next(5)">Continue →</button>
-    </div>
+    <div class="nav"><button class="btn btn-back" onclick="back(5)">← Back</button><button class="btn btn-primary" onclick="next(5)">Continue →</button></div>
   </div>
 
   <div class="section" id="s6">
@@ -296,99 +273,33 @@ input[type=text]::placeholder,input[type=email]::placeholder,textarea::placehold
       <div class="hint">Including any "Other" selections above — please specify here.</div>
       <textarea id="other" placeholder="Context, questions, or anything else on your mind..."></textarea>
     </div>
-    <div class="nav">
-      <button class="btn btn-back" onclick="back(6)">← Back</button>
-      <button class="btn btn-primary" id="submitBtn" onclick="submitForm()">Submit →</button>
-    </div>
+    <div class="nav"><button class="btn btn-back" onclick="back(6)">← Back</button><button class="btn btn-primary" id="submitBtn" onclick="submitForm()">Submit →</button></div>
     <div class="error-msg" id="errorMsg">Something went wrong. Please try again or email hello@forethos.io</div>
   </div>
 
   <div class="section" id="sdone">
     <div class="success">
-      <div class="success-icon">
-        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-      </div>
+      <div class="success-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
       <div class="section-title" style="margin-bottom:0.75rem">You're in.</div>
       <div class="section-sub" style="max-width:440px;margin:0 auto 2rem">We've received your intake. Expect a personal response from Mikey at hello@forethos.io within 24 hours — including your recommended protocol tier and next steps.</div>
-      <div style="font-size:14px;color:rgba(255,255,255,0.35)">Forethos · Wellness intelligence for high-performers</div>
+      <div style="font-size:14px;color:rgba(240,244,248,0.3)">Forethos · Wellness intelligence for high-performers</div>
     </div>
   </div>
 </div>
 
 <script>
-let cur=1;
-const total=6;
+let cur=1;const total=6;
 function setProgress(s){document.getElementById('progress').style.width=((s/total)*100)+'%'}
-function showSection(n){
-  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-  document.getElementById(n===0?'sdone':'s'+n).classList.add('active');
-  setProgress(n);
-  window.scrollTo&&window.scrollTo(0,0);
-}
-document.querySelectorAll('.opt').forEach(opt=>{
-  opt.addEventListener('click',function(){
-    const inp=this.querySelector('input');
-    if(inp.type==='radio'){
-      document.querySelectorAll('input[name="'+inp.name+'"]').forEach(r=>{
-        r.closest('.opt').classList.remove('selected');
-      });
-      this.classList.add('selected');
-    } else {
-      this.classList.toggle('selected',inp.checked);
-    }
-  });
-});
-function getChecked(name){
-  return Array.from(document.querySelectorAll('input[name="'+name+'"]:checked')).map(i=>i.value).join(', ')||'Not selected';
-}
-function getRadio(name){
-  const el=document.querySelector('input[name="'+name+'"]:checked');
-  return el?el.value:'Not selected';
-}
+function showSection(n){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.getElementById(n===0?'sdone':'s'+n).classList.add('active');setProgress(n);window.scrollTo&&window.scrollTo(0,0)}
+document.querySelectorAll('.opt').forEach(opt=>{opt.addEventListener('click',function(){const inp=this.querySelector('input');if(inp.type==='radio'){document.querySelectorAll('input[name="'+inp.name+'"]').forEach(r=>{r.closest('.opt').classList.remove('selected')});this.classList.add('selected')}else{this.classList.toggle('selected',inp.checked)}})});
+function getChecked(name){return Array.from(document.querySelectorAll('input[name="'+name+'"]:checked')).map(i=>i.value).join(', ')||'Not selected'}
+function getRadio(name){const el=document.querySelector('input[name="'+name+'"]:checked');return el?el.value:'Not selected'}
 function next(s){cur=s+1;showSection(cur)}
 function back(s){cur=s-1;showSection(cur)}
 async function submitForm(){
-  const btn=document.getElementById('submitBtn');
-  const errMsg=document.getElementById('errorMsg');
-  btn.disabled=true;
-  btn.textContent='Submitting...';
-  errMsg.style.display='none';
-  const data={
-    'First Name':document.getElementById('fname').value||'Not provided',
-    'Last Name':document.getElementById('lname').value||'Not provided',
-    'Email':document.getElementById('email').value||'Not provided',
-    'Role':getRadio('role'),
-    'Age Range':getRadio('age'),
-    'Protocol Interest':getRadio('tier'),
-    'Wearables':getChecked('wearables'),
-    'Wearable History':getRadio('history'),
-    'Bloodwork':getRadio('bloodwork'),
-    'Sleep Quality':getRadio('sleep'),
-    'Energy Levels':getRadio('energy'),
-    'Pain Points':getChecked('painpoints'),
-    'Exercise Frequency':getRadio('exercise'),
-    'Exercise Type':getChecked('exercisetype'),
-    'Primary Goal':getRadio('primarygoal'),
-    '90-Day Outcome':document.getElementById('outcome').value||'Not provided',
-    'Prior Coaching':getRadio('prior'),
-    'Data Familiarity':getRadio('familiarity'),
-    'Readiness':getRadio('readiness'),
-    'Health & Supplements':document.getElementById('health').value||'None listed',
-    'How They Found Us':getRadio('source'),
-    'Additional Notes':document.getElementById('other').value||'None'
-  };
-  try{
-    const res=await fetch('https://formspree.io/f/mjgaebgo',{
-      method:'POST',
-      headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body:JSON.stringify(data)
-    });
-    if(res.ok){showSection(0);}
-    else{throw new Error('Failed');}
-  }catch(e){
-    btn.disabled=false;
-    btn.textContent='Submit →';
-    errMsg.style.display='block';
-  }
+  const btn=document.getElementById('submitBtn');const errMsg=document.getElementById('errorMsg');
+  btn.disabled=true;btn.textContent='Submitting...';errMsg.style.display='none';
+  const data={'First Name':document.getElementById('fname').value||'Not provided','Last Name':document.getElementById('lname').value||'Not provided','Email':document.getElementById('email').value||'Not provided','Role':getRadio('role'),'Age Range':getRadio('age'),'Protocol Interest':getRadio('tier'),'Wearables':getChecked('wearables'),'Wearable History':getRadio('history'),'Bloodwork':getRadio('bloodwork'),'Sleep Quality':getRadio('sleep'),'Energy Levels':getRadio('energy'),'Pain Points':getChecked('painpoints'),'Exercise Frequency':getRadio('exercise'),'Exercise Type':getChecked('exercisetype'),'Primary Goal':getRadio('primarygoal'),'90-Day Outcome':document.getElementById('outcome').value||'Not provided','Prior Coaching':getRadio('prior'),'Data Familiarity':getRadio('familiarity'),'Readiness':getRadio('readiness'),'Health & Supplements':document.getElementById('health').value||'None listed','How They Found Us':getRadio('source'),'Additional Notes':document.getElementById('other').value||'None'};
+  try{const res=await fetch('https://formspree.io/f/mjgaebgo',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)});if(res.ok){showSection(0)}else{throw new Error('Failed')}}catch(e){btn.disabled=false;btn.textContent='Submit →';errMsg.style.display='block'}
 }
 </script>
